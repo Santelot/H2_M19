@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+                document.getElementById('activity-8').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H2 - M19</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Introducción a la misión y preparación para el aprendizaje.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy exploraremos Bubble, una herramienta increíble para crear aplicaciones sin código. ¡Vamos a construir soluciones innovadoras!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de empezar, quiero ver su energía. Si están emocionados, salten en su lugar. Si están relajados, levanten ambas manos lentamente."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, juntemos nuestras manos en agradecimiento por estar aquí, listos para aprender y crear algo increíble. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy vamos a: 1. Diseñar una solución personalizada con Bubble. 2. Planear características de nuestra app pensando en su MVP y futuras versiones."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion_dia')">
+        <div class="title">💡 Actividad 2: Innovación del Día ⏰ Tiempo: 4 minutos</div>
+        <div class="subtitle">Explorar una herramienta revolucionaria en el desarrollo sin código.</div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Innovación del Día".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy vamos a conocer una plataforma que ha cambiado la forma en que se desarrollan aplicaciones: Bubble.io. Es una herramienta que permite a cualquiera, incluso sin experiencia en programación, crear aplicaciones altamente personalizables. ¡Es el futuro del desarrollo sin código!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 7 "Características de Bubble".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Bubble es especial porque permite diseñar interfaces con un editor visual, programar flujos de trabajo y manejar bases de datos. Además, es ideal para proyectos más complejos como apps estilo Airbnb o Facebook. Vamos a explorar estas características y cómo pueden ayudarnos a convertir ideas en realidad."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión sobre Bubble".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¿Qué les parece? Bubble nos muestra cómo es posible crear aplicaciones potentes sin necesidad de código. Esto abre un mundo de posibilidades para emprendedores, empresas y creativos. ¿Cómo creen que esta herramienta podría cambiar el futuro del desarrollo de software?"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">🧠 Actividad 3: Brain Gym ⏰ Tiempo: 19.5 minutos</div>
+        <div class="subtitle">Explorar las funcionalidades clave de Bubble.</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Introducción".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy damos un gran paso en el mundo del desarrollo de aplicaciones sin código. Si recuerdan, trabajamos previamente con Glide, una herramienta excelente para proyectos pequeños. Pero ¿qué pasa cuando queremos construir algo más complejo, como un sitio estilo Airbnb o Facebook? Aquí es donde Bubble entra en acción. Es una plataforma visual que nos permite construir aplicaciones completas, escalables y personalizables. Esta misión nos llevará a conocer Bubble en profundidad, explorando cómo esta herramienta transforma nuestras ideas en soluciones tecnológicas impactantes. ¡Prepárense para aprender y crear!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "¿Qué es Bubble?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Bubble es una plataforma de programación visual que lo hace todo: diseño, lógica, bases de datos y más. A diferencia de otras herramientas, Bubble no se limita a funciones específicas; es una solución completa para crear aplicaciones potentes. Por ejemplo, puedes diseñar interfaces con su editor de arrastrar y soltar, programar flujos de trabajo que respondan a las acciones de los usuarios y gestionar bases de datos complejas. Además, puedes integrarla con APIs y plugins, ampliando aún más sus capacidades. En resumen, Bubble es ideal para quienes quieren construir aplicaciones escalables y avanzadas sin necesidad de escribir código."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 11 "Editor Visual".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "El editor visual de Bubble es el corazón de la plataforma. Aquí es donde diseñas tus páginas, estructuras tus bases de datos y programas las acciones que tu app realizará. Es tan intuitivo que solo necesitas apuntar y hacer clic para construir todo. Además, puedes ver los resultados en tiempo real y probar tu app con un solo clic. Es similar a Glide, pero mucho más poderoso y flexible. Este editor te da la libertad de crear aplicaciones personalizadas desde cero o adaptar plantillas según tus necesidades. En esta lección, aprenderemos cómo usarlo para dar vida a nuestras ideas y asegurarnos de que la experiencia del usuario sea clara y funcional."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 12 "Gestión de Bases de Datos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Bubble automatiza la gestión de bases de datos para que no tengas que preocuparte por aspectos técnicos complicados. Desde el momento en que creas una aplicación, Bubble prepara bases de datos listas para usar. Además, realiza respaldos automáticos y ofrece herramientas avanzadas de seguridad y privacidad. Por ejemplo, puedes configurar tus bases de datos para almacenar información como perfiles de usuario, mensajes o datos transaccionales, todo con unos cuantos clics. Esto significa que puedes construir aplicaciones funcionales y confiables sin tener experiencia previa en bases de datos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (1 minuto):</strong> Proyectar Diapositiva 13 "Gestión de Usuarios y Seguridad".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Las herramientas de Bubble para gestionar usuarios te permiten configurar registros de inicio de sesión, flujos de autenticación y permisos personalizados. Todo esto se alinea con los estándares de seguridad de la industria para proteger los datos de tus usuarios. Por ejemplo, puedes permitir que los usuarios se registren con sus correos electrónicos o cuentas de Google, y controlar quién tiene acceso a qué partes de la aplicación. Esto no solo hace que tu app sea segura, sino también fácil de usar y personalizar según las necesidades de tus usuarios."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (1 minuto):</strong> Proyectar Diapositiva 14 "Integración de Terceros".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy en día, la mayoría de las aplicaciones no trabajan aisladas; necesitan comunicarse con otras plataformas. Bubble facilita estas conexiones mediante APIs, plugins y conectores. Por ejemplo, puedes integrar tu app con un servicio de mapas, un chatbot o incluso una plataforma de análisis de datos. Gracias a esto, puedes expandir las funcionalidades de tu app sin necesidad de desarrollar todo desde cero. La comunidad de Bubble también crea plugins que puedes usar para añadir herramientas específicas de forma rápida y sencilla."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (1 minuto):</strong> Proyectar Diapositiva 15 "Escalabilidad".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Uno de los mayores beneficios de Bubble es su capacidad de escalar. Esto significa que puedes empezar con una app sencilla y luego ampliarla a medida que crezca tu base de usuarios o aumenten tus necesidades. Bubble está alojado en AWS, la red más grande y segura del mundo, lo que garantiza estabilidad y rapidez. Además, distribuye los archivos a través de la red de Cloudflare, lo que permite un rendimiento óptimo incluso para apps con alta demanda. En pocas palabras, con Bubble puedes construir una app que no solo sea funcional hoy, sino también preparada para el futuro."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 8 (1 minuto):</strong> Proyectar Diapositiva 16 "Construcción de Apps".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Crear una app en Bubble combina muchas de las habilidades que ya hemos practicado: diseño, programación visual y gestión de datos. Piensen en cómo una app combina distintos elementos: diseño intuitivo, datos organizados y flujos de trabajo eficientes. En Bubble, empezamos definiendo qué queremos lograr con la app, luego organizamos los datos, diseñamos las pantallas y conectamos todo con workflows. Al hacerlo, podemos construir aplicaciones funcionales, intuitivas y adaptadas a resolver problemas reales. Hoy, veremos cómo estos pasos se integran en Bubble para crear algo único y útil."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 9 (1 minuto):</strong> Proyectar Diapositiva 17 "Diferentes Aplicaciones".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Aunque las apps pueden parecer muy distintas, todas comparten algo en común: están diseñadas para resolver problemas con datos. Por ejemplo, un CRM organiza información de clientes, una app de comida gestiona pedidos, y una red social conecta usuarios a través de sus intereses. En esencia, las apps toman datos, los procesan y los presentan de forma útil. Con Bubble, podemos aplicar estos principios para construir cualquier tipo de app. La clave es entender qué problema queremos resolver y cómo los datos se convierten en la solución."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 10 (1 minuto):</strong> Proyectar Diapositiva 18 "Creando tus Apps".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Crear una app es un proceso incremental: empieza resolviendo un problema simple y agrega más funciones con el tiempo. Por ejemplo, una app puede comenzar como una lista básica de contactos, y luego integrar herramientas como búsqueda avanzada, estadísticas y notificaciones. En Bubble, puedes iterar fácilmente, lo que significa que puedes construir una versión inicial, probarla con usuarios y luego mejorarla según sus comentarios. Esto nos permite adaptarnos y garantizar que nuestra app sea útil y relevante a largo plazo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 11 (1 minuto):</strong> Proyectar Diapositiva 19 "Terminología Básica".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En Bubble, hay términos esenciales que debemos conocer para trabajar de manera eficiente. Por ejemplo, 'Diseño' se refiere a cómo luce tu app; 'Workflows' es lo que hace que tu app funcione; 'Condiciones' permiten configurar acciones específicas como 'si pasa esto, haz aquello'; la 'Base de Datos' es donde se almacena la información; y 'Plugins' son herramientas adicionales que amplían las capacidades de tu app. Aprenderemos a usar cada uno de estos elementos mientras trabajamos en Bubble."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 12 (1 minuto):</strong> Proyectar Diapositiva 20 "Planeando Características".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de construir una app, debemos decidir qué características son esenciales. Esto se basa en la visión que tenemos del problema que la app resolverá. Por ejemplo, si estamos creando una app para gestionar contactos, algunas características generales serían un registro de inicio de sesión, búsqueda y notificaciones. Luego, podemos identificar características específicas como un análisis gráfico de los datos de contacto. Este proceso nos ayuda a priorizar y mantenernos enfocados en lo que realmente importa para que nuestra app sea funcional desde el inicio."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 13 (1 minuto):</strong> Proyectar Diapositiva 21 "Características Generales".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Las características generales son la base de cualquier app. Incluyen elementos como el registro de usuarios, recuperación de contraseñas, notificaciones y barras de búsqueda. Estas características son esenciales porque permiten que cualquier usuario interactúe con la app de manera intuitiva y eficiente. Aunque no son las que diferencian tu app de otras, aseguran que funcione correctamente y cumpla con las expectativas básicas de los usuarios. Bubble facilita la implementación de estas características con plantillas y herramientas prediseñadas."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 14 (1 minuto):</strong> Proyectar Diapositiva 22 "Características Específicas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Las características específicas son las que diferencian tu app de las demás. Por ejemplo, una app de comida puede incluir un carrito de compras dinámico, mientras que una red social podría tener un sistema avanzado para personalizar el feed. Estas características están directamente ligadas al problema que buscas resolver y son la razón por la que los usuarios elegirán tu app. Cuando planeamos estas características, es importante priorizar y asegurarnos de que resuelvan el problema central de manera efectiva."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 15 (1 minuto):</strong> Proyectar Diapositiva 23 "Piensa en Versiones".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Para crear una app exitosa, es clave pensar en versiones. La primera versión, conocida como MVP (Producto Mínimo Viable), debe incluir solo las características esenciales. Esto permite lanzar la app rápidamente, recibir retroalimentación y validar la idea. Después del MVP, podemos trabajar en la versión 1.0, que incluye mejoras basadas en los comentarios de los usuarios, y luego en la versión 2.0, añadiendo más funcionalidades. Este enfoque no solo te ayuda a mantenerte enfocado, sino que también garantiza que desarrolles algo útil y adaptable con el tiempo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 16 (1 minuto):</strong> Proyectar Diapositiva 24 "Planeando tu MVP".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "El MVP o Producto Mínimo Viable es la versión más básica y funcional de tu app. Quizás hayan escuchado el término antes ya que normalmente en el contexto de los deportes 'MVP' son las siglas para 'Most Valuable Player', sin embargo dentro del mundo del emprendimiento y desarrollo de apps tiene el significado que estamos aprendiendo el día de hoy. Su objetivo es resolver el problema central con las características más esenciales. Para planear tu MVP, empieza por identificar el problema principal que quieres resolver. Luego, prioriza las características que son indispensables para lograrlo. Por ejemplo, si estás construyendo una app de gestión de clientes, una función básica podría ser agregar y buscar contactos. Recuerda que el MVP no debe ser perfecto, sino funcional, para que puedas probarlo, recibir retroalimentación y mejorarlo con el tiempo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 17 (1.5 minutos):</strong> Proyectar Diapositiva 25 "El Viaje del Usuario".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "El viaje del usuario representa los pasos que un usuario sigue para lograr un objetivo dentro de tu app. Por ejemplo, en una app de comida, el usuario podría empezar buscando un restaurante, luego elegir platillos, agregarlos al carrito y finalizar el pedido. Diseñar este flujo de manera clara y sencilla garantiza que los usuarios puedan interactuar con tu app sin frustraciones. Piensa en el usuario como el protagonista de una historia: cada pantalla y función deben guiarlos de manera intuitiva hacia su objetivo, asegurándote de que cada interacción sea efectiva y satisfactoria."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 18 (1.5 minutos):</strong> Proyectar Diapositiva 26 "Sign-up User Journey".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Imagina que un usuario decide probar tu app. El proceso de registro, o 'Sign-up Journey', es su primer encuentro contigo, y debe ser fácil, claro y motivador. Comienza con una pantalla de bienvenida que muestre los beneficios de la app. Luego, ofrece opciones simples para registrarse, como con un correo electrónico o con Google. Asegúrate de pedir solo la información necesaria para no abrumar al usuario. Después del registro, una bienvenida personalizada puede marcar la diferencia, guiando al usuario hacia la experiencia principal de tu app. Un registro bien diseñado es clave para ganar la confianza del usuario desde el primer momento."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 19 (0.5 minutos):</strong> Proyectar Diapositiva 27 "Revisión de Objetivos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, antes de continuar, revisemos lo que hemos logrado hasta ahora. Ya comprendemos qué es Bubble y cómo se diferencia de otras plataformas. También aprendimos a identificar las características esenciales para nuestro MVP y cómo diseñar un viaje del usuario efectivo. ¡Estamos avanzando muy bien! Recuerden que estos conceptos serán fundamentales para el Challenge, así que sigamos adelante con esta gran energía."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🌟 Actividad 4: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Relajarse y renovar energía con un breve ejercicio.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 27 "Manos Mágicas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, vamos a hacer un ejercicio rápido para relajarnos y mejorar nuestra concentración. Froten sus manos rápidamente hasta que se sientan calientes, y luego colóquenlas sobre sus ojos cerrados. ¡Comencemos!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 28 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 29 "Beneficios de la Actividad".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Bien hecho, Genios! Este ejercicio nos ayuda a relajar nuestra vista, especialmente después de pasar tiempo frente a las pantallas, y mejora nuestra concentración para continuar con energía renovada."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 5: Team Gnius ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Formar equipos y recoger materiales para la actividad.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 30 "Formación de Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ahora vamos a formar equipos de 4 personas. Es importante que no trabajen con las mismas personas de su última app. ¡Tienen 1 minuto para organizarse!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 31 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 32 "Recogida de Materiales".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, que un representante de cada equipo pase al frente para recoger las Magic Tablets. También tienen 1 minuto para hacerlo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 33 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 6 -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🚀 Actividad 6: Challenge ⏰ Tiempo: 15 minutos</div>
+        <div class="subtitle">Diseñar soluciones innovadoras en equipo.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 34 "Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Es hora del Challenge, Genios! Hoy pondremos a prueba nuestras habilidades de diseño y creatividad. Prepárense, porque vamos a imaginar soluciones innovadoras que resuelvan problemas reales."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 35 "El Reto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, imaginen esta situación: Están viajando a una ciudad o país nuevo y necesitan un lugar donde quedarse. Los hoteles pueden ser caros y poco personalizados, pero hay personas en esa ciudad con habitaciones libres, departamentos vacíos o incluso espacios únicos como casas en los árboles. Aquí está el reto: Diseñen una app que conecte a viajeros y anfitriones. Piensen en las necesidades de ambos tipos de usuarios: ¿Cómo se buscarían? ¿Qué información necesitarían para sentirse seguros? ¿Qué características harían que el proceso sea fácil y agradable? No se preocupen por construirla, solo imaginen y diseñen una solución creativa."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (10 minutos):</strong> Proyectar Diapositiva 36 "Cronómetro - 10 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 37 "Comparación entre Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ahora junten su equipo con el que esté más cercano. Quiero que compartan las funcionalidades que diseñaron para sus apps. ¿Qué similitudes y diferencias encuentran? ¿Qué ideas podrían combinarse para mejorar aún más las soluciones?"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (3 minutos):</strong> Proyectar Diapositiva 38 "Cronómetro - 5 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (0.5 minutos):</strong> Proyectar Diapositiva 39 "Revisión de Objetivos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que hemos trabajado en nuestras soluciones, revisemos los objetivos alcanzados. Ya entendemos cómo planear una app centrada en resolver problemas reales. También hemos trabajado en el diseño de experiencias para usuarios, identificando necesidades y proponiendo soluciones innovadoras. ¡Gran trabajo, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 40 "You've Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Excelente trabajo, Genios! Hoy demostraron su creatividad y habilidades de diseño. Todos han ganado Mon-e por su esfuerzo y dedicación. ¡Sigan así, transformando ideas en soluciones increíbles!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 7 -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">🎁 Actividad 7: Easter Egg ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Dinámica para premiar la atención y participación.</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 41 "Easter Egg".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es hora del Easter Egg. Esta dinámica premia a quienes han estado atentos. Proyectaré una pregunta y los tres primeros en levantar la mano tendrán la oportunidad de responder en voz baja. ¡Listos para ganar Mon-e!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 42 "Pregunta Easter Egg".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Aquí está la pregunta: '¿Cuál es el significado de las siglas MVP en el contexto de los deportes?' ¡Piensen rápido y levanten la mano si tienen la respuesta! Recuerden, no la digan en voz alta."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 43 "Respuesta Correcta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a escuchar las respuestas. Tú, ven y dime la respuesta al oído. Ahora tú, y finalmente tú. ¡La respuesta correcta es 'Most Valuable Player'! Felicidades a los ganadores, se llevan Mon-e. Excelente atención, Genios."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 8 -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🏅 Actividad 8: Honor de Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Cierre de la misión y orden del espacio.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 44 "Honor de Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es momento de honrar nuestro espacio. Por favor, cada equipo devuelva las Magic Tablets y asegúrense de que su área de trabajo quede ordenada. Este hábito no solo nos ayuda a mantener el salón limpio, sino también a respetar a quienes compartirán este espacio después de nosotros. ¡Gracias por su ayuda!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
